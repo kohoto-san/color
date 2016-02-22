@@ -65,7 +65,7 @@
 
 	</div>
 
-	<div class="item item-details output-gradient">
+	<div class="item item-details output-gradient" onclick="select_all(this)">
 		<p> background-image: linear-gradient{{object.get_html}}; </p>
 		<p> background-image: -moz-linear-gradient{{object.get_html}}; </p>
 		<p> background-image: -webkit-linear-gradient{{object.get_html}}; </p>
@@ -76,5 +76,23 @@
 	<div class="feed"></div> <!-- /.feed -->
 
     <script src="{% static 'load_palettes.js' %}"></script>
+
+    <script type="text/javascript">
+
+    	function select_all(el) {
+            if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
+                var range = document.createRange();
+                range.selectNodeContents(el);
+                var sel = window.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+            } else if (typeof document.selection != "undefined" && typeof document.body.createTextRange != "undefined") {
+                var textRange = document.body.createTextRange();
+                textRange.moveToElementText(el);
+                textRange.select();
+            }
+        }
+
+    </script>
 
 {% endblock %}

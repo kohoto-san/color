@@ -380,6 +380,10 @@
 
     <script type="text/javascript">
 
+        {% if not user.is_authenticated %}
+            $('.login-popup-wrapper').show();
+        {% endif %}
+
         $(".colorpicker").spectrum({
             color: "#f00",
             showAlpha: true,

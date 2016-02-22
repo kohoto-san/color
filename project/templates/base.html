@@ -2,8 +2,10 @@
 <html>
 <head>
 	{% block header %}
+
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<title></title>
+		<title>Tabiku</title>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -89,13 +91,16 @@
             <div class="login-buttons">
                 <a href="/accounts/twitter/login/?process=login" class="post-content-share-twitter">
                     <i class="fa fa-twitter fa-lg"></i> 
-                    <span> Twitter </span>
+                    <span> Sign in with Twitter </span>
                 </a>
 
+                <!--
                 <a href="/accounts/facebook/login/?process=login" class="post-content-share-facebook">
                     <i class="fa fa-facebook fa-lg"></i> 
                     <span> Facebook </span>
                 </a>
+                -->
+
             </div> <!-- /.login-buttons -->
         </div>
     {% endblock login %}
