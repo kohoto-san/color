@@ -1,0 +1,13 @@
+# sudo apt-get build-dep python-imaging
+# sudo apt-get install libjpeg62 libjpeg62-dev
+
+# pip install -r ~/Projects/requirements.txt
+
+Django==1.9
+psycopg2==2.6.1
+Pillow==3.0.0
+wheel==0.24.0
+django-imagekit
+django-allauth
+
+# unidecode

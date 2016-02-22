@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+		
+	<div class="item item-details" data-id="{{object.id}}">
+
+		<div class="canvas" style="background-image: linear-gradient{{object.get_html}};">
+			
+			<div class="canvas-popup">
+				<div> 
+					<span class="tran">{{object.get_color_one}} </span>
+				</div>
+
+				<div> 
+					<span class="tran2">{{object.get_color_two}}</span>
+				</div>
+			</div>
+
+		</div> <!-- /.canvas -->
+		
+		<div class="actionbar">
+			
+			<div class="actionbar-element actionbar-left">
+				{% if user.profile in object.likes.all %}
+					<a href="#" class="like-wrapper like-active">
+						<i class="fa fa-heart"></i>
+						{% comment %}
+						<span>0</span>
+						{% endcomment %}
+					</a>
+				{% else %}
+					<a href="#" class="like-wrapper">
+						<i class="fa fa-heart"></i>
+						{% comment %}
+						<span>0</span>
+						{% endcomment %}
+					</a>
+				{% endif %}
+			</div>
+
+			<div class="actionbar-element actionbar-right">
+				<span>1 Day</span>
+			</div>
+
+			{% comment %}
+			<div class="actionbar-share">
+				<div class="actionbar-element actionbar-left">
+					<span>Share</span>
+				</div>
+
+				<div class="actionbar-element actionbar-right">
+					<a href="#"> 
+						<i class="fa fa-facebook fa-lg"></i>
+					</a>
+
+					<a href="#"> 
+						<i class="fa fa-twitter fa-lg"></i>
+					</a>
+				</div>
+			</div>
+			{% endcomment %}
+
+		</div> <!-- /.actionbar -->
+
+	</div>
+
+	<div class="item item-details output-gradient">
+		<p> background-image: linear-gradient{{object.get_html}}; </p>
+		<p> background-image: -moz-linear-gradient{{object.get_html}}; </p>
+		<p> background-image: -webkit-linear-gradient{{object.get_html}}; </p>
+		<p> background-image: -o-linear-gradient{{object.get_html}}; </p>
+		<p> background-image: -ms-linear-gradient{{object.get_html}}; </p>
+	</div>
+
+	<div class="feed"></div> <!-- /.feed -->
+
+    <script src="{% static 'load_palettes.js' %}"></script>
+
+{% endblock %}

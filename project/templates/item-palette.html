@@ -1,0 +1,69 @@
+<div class="item" data-id="{{object.id}}">
+
+	{% load humanize %}
+
+	{% if is_featured %}
+		<a href="/featured/{{object.id}}" class="canvas" style="background-image: linear-gradient{{object.get_html}};">
+	{% else %}
+		<a href="/p/{{object.id}}" class="canvas" style="background-image: linear-gradient{{object.get_html}};">
+	{% endif %}
+		
+		<div class="canvas-popup">
+			<div> 
+				<span class="tran">{{object.get_color_one}} </span>
+			</div>
+
+			<div> 
+				<span class="tran2">{{object.get_color_two}}</span>
+			</div>
+		</div>
+
+	</a> <!-- /.canvas -->
+	
+	<div class="actionbar">
+		
+		<div class="actionbar-element actionbar-left">
+			{% if user.profile in object.likes.all %}
+				<a href="#" class="like-wrapper like-active">
+					<i class="fa fa-heart"></i>
+					{% comment %}
+					<span>0</span>
+					{% endcomment %}
+				</a>
+			{% else %}
+				<a href="#" class="like-wrapper">
+					<i class="fa fa-heart"></i>
+					{% comment %}
+					<span>0</span>
+					{% endcomment %}
+				</a>
+			{% endif %}
+
+				
+		</div>
+
+		<div class="actionbar-element actionbar-right">
+			<span>{{object.time|naturalday}}</span>
+		</div>
+
+		{% comment %}
+		<div class="actionbar-share">
+			<div class="actionbar-element actionbar-left">
+				<span>Share</span>
+			</div>
+
+			<div class="actionbar-element actionbar-right">
+				<a href="#"> 
+					<i class="fa fa-facebook fa-lg"></i>
+				</a>
+
+				<a href="#"> 
+					<i class="fa fa-twitter fa-lg"></i>
+				</a>
+			</div>
+		</div>
+		{% endcomment %}
+
+	</div> <!-- /.actionbar -->
+
+</div>

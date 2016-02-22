@@ -1,0 +1,6 @@
+media/*
+static_root/*
+# project/blog/__pycache__/*
+# project/project/__pycache__/*
+# project/quiz/__pycache__/*
+# project/spectest/__pycache__/*
