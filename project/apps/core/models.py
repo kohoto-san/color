@@ -38,7 +38,7 @@ class Profile(models.Model):
 
 class GradientPalette(models.Model):
 
-    profile = models.ForeignKey(Profile)
+    profile = models.ForeignKey(Profile, blank=True, null=True)
     date = models.DateTimeField(default=timezone.now)
     time = models.DateTimeField(default=timezone.now)
 

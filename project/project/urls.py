@@ -16,6 +16,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
+from os import environ
 
 from apps.core import views
 
@@ -38,3 +42,6 @@ urlpatterns = [
     url(r'^featured/(?P<blend_id>\d+)/$', views.featured_blend, name='featured_blend'),
     url(r'^p/(?P<blend_id>\d+)/$', views.blend_details, name='blend_details'),
 ]
+
+if environ['DEBUG_BOOL']:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

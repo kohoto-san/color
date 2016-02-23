@@ -4,6 +4,17 @@
 	{% block header %}
 
     	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="shortcut icon" href="/media/favicon.ico">
+
+    	<meta property="og:title" content="Tabiku" />
+	    <meta name="twitter:title" content="Tabiku" />
+	    <meta property="og:image" content="http://tabiku.com/media/og.png" />
+	    <meta name="twitter:image" content="http://tabiku.com/media/og.png" />
+	    <meta property="og:description" content="Discover and generate beautiful CSS3 gradients." />
+	    <meta name="description" content="Discover and generate beautiful CSS3 gradients.">
+	    <meta name="twitter:card" content="photo" />
+	    <meta name="twitter:site" content="@sihaelov" />
+	    <meta name="twitter:url" content="http://tabiku.com" />
 		
 		<title>Tabiku</title>
 
@@ -103,15 +114,16 @@
             <div class="login-buttons">
                 <a href="/accounts/twitter/login/?process=login" class="post-content-share-twitter">
                     <i class="fa fa-twitter fa-lg"></i> 
-                    <span> Sign in with Twitter </span>
+                    <span> Sign in with Twitter</span>
                 </a>
 
-                <!--
+                {% comment %}
                 <a href="/accounts/facebook/login/?process=login" class="post-content-share-facebook">
                     <i class="fa fa-facebook fa-lg"></i> 
-                    <span> Facebook </span>
+                    <span>Sign in with Facebook</span>
                 </a>
-                -->
+                {% endcomment %}
+                
 
             </div> <!-- /.login-buttons -->
         </div>

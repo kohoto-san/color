@@ -76,8 +76,12 @@ def blend(request):
 
 
 def blend_create(request):
-    if request.user.is_authenticated() and request.method == 'POST':
-        profile = request.user.profile
+    if request.method == 'POST':
+        if request.user.is_authenticated():
+            profile = request.user.profile
+            gradient_palette = GradientPalette.objects.create(profile=profile, degrees=90)
+        else:
+            gradient_palette = GradientPalette.objects.create(degrees=90)
 
         bgOne = request.POST.get('bgOne')
         grad0 = request.POST.get('grad0')
@@ -85,7 +89,6 @@ def blend_create(request):
         bgTwo = request.POST.get('bgTwo')
         grad100 = request.POST.get('grad100')
 
-        gradient_palette = GradientPalette.objects.create(profile=profile, degrees=90)
 
         GradientColor.objects.create(palette=gradient_palette, color=bgOne, percentages=grad0, priority=0)
         GradientColor.objects.create(palette=gradient_palette, color=bgTwo, percentages=grad100, priority=1)
