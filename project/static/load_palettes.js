@@ -45,6 +45,18 @@ function loadPosts(){
     			var newElems = $( data );
 			}
 
+            newElems.each(function(){
+                var buildGradient = $(this).data("gradient");
+                var display = $(this).find('.canvas');
+
+                display.css('background-image', 'linear-gradient' + buildGradient);
+                display.css('background-image', '-moz-linear-gradient' + buildGradient);
+                display.css('background-image', '-webkit-linear-gradient' + buildGradient);
+                display.css('background-image', '-o-linear-gradient' + buildGradient);
+                display.css('background-image', '-ms-linear-gradient' + buildGradient);
+            });
+
+
     		$container.append(newElems);
 
             page += 1;

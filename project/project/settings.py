@@ -87,13 +87,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # https://docs.djangoproject.com/en/1.9/topics/templates/#django.template.backends.django.DjangoTemplates
         },
     },
 ]
-
-TEMPLATE_LOADERS = (
-    'django.template.loaders.app_directories.load_template_source',
-)
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`

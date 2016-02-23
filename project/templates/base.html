@@ -12,6 +12,8 @@
 
 	    {% load staticfiles %}
 	    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+	    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,100,100italic,300&subset=latin,cyrillic,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
 	
 	{% endblock header %}
 
@@ -30,41 +32,44 @@
 	 		var id_profile = '';
 		{% endif %}
 
+		$(document).ready(function() {
 
-		$('body').on('click', '.like-wrapper', function() {
+			$('body').on('click', '.like-wrapper', function() {
 
-	        {% if user.is_authenticated %}
+		        {% if user.is_authenticated %}
 
-	            // var votes = parseInt($(this).find('p').text());
+		            // var votes = parseInt($(this).find('p').text());
+		            
+		            var post_id = $(this).parents('.item').data('id');
+
+		            if( $(this).hasClass('like-active') ){
+		                // $(this).find('p').text(votes - 1);
+		                $(this).removeClass('like-active');
+		                var method = 'DELETE';
+		            }
+		            else{
+		                // $(this).find('p').text(votes + 1);
+		                
+		                $(this).addClass('like-active');
+		                var method = 'CREATE';
+		            }
+
+		            var upvote_url = "{% url 'like' '666' %}";
+		            upvote_url = upvote_url.replace('666', post_id)
+
+		            $.ajax({
+		                url: upvote_url,
+		                type: 'POST',
+		                data: {'method': method}
+		            });
+
+		        {% else %}
+		            $('.login-popup-wrapper').show();
+		        {% endif %}
 	            
-	            var post_id = $(this).parents('.item').data('id');
-
-	            if( $(this).hasClass('like-active') ){
-	                // $(this).find('p').text(votes - 1);
-	                $(this).removeClass('like-active');
-	                var method = 'DELETE';
-	            }
-	            else{
-	                // $(this).find('p').text(votes + 1);
-	                
-	                $(this).addClass('like-active');
-	                var method = 'CREATE';
-	            }
-
-	            var upvote_url = "{% url 'like' '666' %}";
-	            upvote_url = upvote_url.replace('666', post_id)
-
-	            $.ajax({
-	                url: upvote_url,
-	                type: 'POST',
-	                data: {'method': method}
-	            });
-
-	        {% else %}
-	            $('.login-popup-wrapper').show();
-	        {% endif %}
-            
-        });
+	        }); // click like-wrapper
+    	
+    	}); //document ready
 
 	</script>
 
@@ -81,10 +86,17 @@
 
 	</div> <!-- /.navbar -->
 
+	<div class="twitter-sihaelov">
+		<a href="https://twitter.com/sihaelov" target="_blank">
+			<i class="fa fa-twitter"></i>
+			<span>@sihaelov</span>
+		</a>
+	</div>
+
 	{% block login %}
         <div class="login-popup-wrapper" style="display: none;">
 
-	        <a href="#" class="close" style="position: absolute; top: 0px; right: 0px; color: #000; width: auto;">
+	        <a href="#" class="close">
                 <i class="fa fa-times"></i>
             </a>
 
@@ -120,6 +132,7 @@
             $('.login-popup-wrapper').hide();
         });
 
+
 	</script>
 
 <script>
@@ -131,6 +144,7 @@
   ga('create', 'UA-64063502-5', 'auto');
   ga('send', 'pageview');
 </script>
+
 
 </body>
 </html>

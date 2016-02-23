@@ -14,22 +14,18 @@
 
 
 {% block content %}
-
-
-    {% comment %}
-    <div class="code-fade">
-        <span id="hide-gradient-code">close</span>
-        <div id="gradient-output" onclick="select_all(this)"></div>
-    </div>
-    {% endcomment %}
-
-
+    
+    
 
     <div class="gradient-body">
+            
+        <div class="message">
+            <h2>Sorry, looks like your browser window is less than 600px tall!</h2>
+        </div>
+
             <div class="initiate-gradient">
                 <i class="fa fa-caret-right fa-lg"></i>
             </div>
-
 
             <div class="display" style="height: 100vh;">
 
@@ -40,18 +36,20 @@
                                 <li class="sg" style="background-color: rgb(26, 188, 156);"></li>
                                 <li class="sg" style="background-color: rgb(46, 204, 113);"></li>
                                 <li class="sg" style="background-color: rgb(52, 152, 219);"></li>
-                                <li class="sg" style="background-color: rgb(155, 89, 182);"></li>
+                                <li class="sg active" style="background-color: rgb(155, 89, 182);"></li>
                                 <li class="sg" style="background-color: rgb(52, 73, 94);"></li>
                                 <li class="sg" style="background-color: rgb(241, 196, 15);"></li>
-                                <li class="sg active" style="background-color: rgb(230, 126, 34);"></li>
+                                <li class="sg" style="background-color: rgb(230, 126, 34);"></li>
                                 <li class="sg" style="background-color: rgb(231, 76, 60);"></li>
                             </div>
 
-                            <li><input class="colorpicker" /></li>
+                            <li class="colorpicker sg">
+                                <i class="fa fa-plus fa-4x"></i>                                
+                            </li>
                         </ul>
                     </div>
 
-                    <div class="color-fill open left-fill" style="background-color: rgb(52, 73, 94);"></div>
+                    <div class="color-fill open left-fill" style="background-color: rgb(155, 89, 182);"></div>
                 </div> <!-- /.color-wrap -->
 
 
@@ -63,81 +61,47 @@
                                 <li class="sg" style="background-color: rgb(46, 204, 113);"></li>
                                 <li class="sg" style="background-color: rgb(52, 152, 219);"></li>
                                 <li class="sg" style="background-color: rgb(155, 89, 182);"></li>
-                                <li class="sg" style="background-color: rgb(52, 73, 94);"></li>
+                                <li class="sg active" style="background-color: rgb(52, 73, 94);"></li>
                                 <li class="sg" style="background-color: rgb(241, 196, 15);"></li>
-                                <li class="sg active" style="background-color: rgb(230, 126, 34);"></li>
+                                <li class="sg" style="background-color: rgb(230, 126, 34);"></li>
                                 <li class="sg" style="background-color: rgb(231, 76, 60);"></li>
                             </div>
 
-                            <li><input class="colorpicker" /></li>
+                            <li class="colorpicker sg">
+                                <i class="fa fa-plus fa-4x"></i>                                
+                            </li>
                         </ul>
                     </div>
 
-                    <div class="color-fill open right-fill" style="background-color: rgb(2, 73, 194);"></div>
+                    <div class="color-fill open right-fill" style="background-color: rgb(52, 73, 94);"></div>
                 </div> <!-- /.color-wrap -->
 
 
-
-
-
-
                 <div class="gradient-slider ui-draggable ui-draggable-handle fixed fac active-slider">
-                    
-                    <!--
-                    <div class="move-gradient">
-                        <i class="fa fa-arrows-h"></i>
-                    </div>
-                    -->
 
-
-                    <div class="undo-generate">
-
-                        <div class="refresh-gradient">
-                            <i class="fa fa-times fa-5x"></i>
-                        </div>
-
-                        <div class="apply-gradient">
-                            <i class="fa fa-check-circle-o fa-5x"></i>
-                        </div>
-                        
-                        <!--
-                        <div class="copy-gradient show-copy">
-                            <i class="icon icon-code"></i>
-                        </div>
-                        -->
-
-                    </div>
-                    
                     <div class="generate-gradient-line" style="display: block;"></div>
 
                     <i class="gradient-arrow gradient-arrow-left fa fa-caret-left fa-4x"></i>
                     <i class="gradient-arrow gradient-arrow-right fa fa-caret-right fa-4x"></i>
 
+                </div> <!-- /.gradient-slider -->
+
+                <div class="gradient-controll">
+                    <div class="apply-gradient">
+                        <i class="fa fa-check-circle-o fa-4x"></i>
+                    </div>
+
+                    <div class="refresh-gradient">
+                        <i class="fa fa-times fa-4x"></i>
+                    </div>
                 </div>
+          
           </div> <!-- /.display -->
 
     </div> <!-- /.gradient-body -->
 
 
     <style type="text/css">
-
-        body{
-            margin: 0;
-        }
-
-        .flat{
-            background-color: rgb(39, 174, 96);
-        }
-
-        .flat.sg-four {
-            background-color: blue;
-        }
-
-
-
-
-
-
 
         .gradient-body{
             /*width: 80%;*/
@@ -158,7 +122,7 @@
         }
 
         .palette-group {
-            height: 100%;
+            /*height: 100%;*/
             width: 65px;
             margin: 0;
             padding: 10px;
@@ -169,7 +133,6 @@
             position: absolute;
             z-index: 4;
             max-height: 550px;
-            margin-top: -305px;
             top: 50%;
             border-radius: 3px;
             -webkit-border-radius: 3px;
@@ -177,10 +140,19 @@
             box-shadow: 0 1px 5px rgba(0,0,0,0.3);
             -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.3);
             -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+
+            margin-top: -305px;
+        }
+
+        @media (max-width: 619px){
+            .palette-group {
+                margin-top: -155px;
+            }
         }
 
         .palette {
             padding: 0;
+            margin: 0;
         }
 
         .palette li {
@@ -317,61 +289,50 @@
 
         }
 
-        .undo-generate {
+        .gradient-controll{
             position: absolute;
-            width: 80px;
-            height: 80px;
-            top: 50%;
+            right: 30px;
+            top: 10px;
+            color: #fff;
             z-index: 12;
-            text-align: center;
 
-            /* margin-top: -70px; */
-            /* left: 50%; */
-            /* margin-left: -40px; */
+            display: none;
         }
 
-        .undo-generate div{
-            position: relative;
-            color: rgba(255,255,255,1);
+        .gradient-controll > div{
+            display: inline-block;
+            margin-right: 20px;
         }
 
-        .refresh-gradient{
-            top: 70px;
-        }
-
-        .refresh-gradient:hover{
+        .gradient-controll > div:hover{
             color: rgba(255,255,255, 0.7);
-        }
-
-        .apply-gradient{
-            top: -170px;
-        }
-
-        /*
-        .move-gradient {
-            position: absolute;
-            top: 50%;
-            z-index: 11;
-            background-color: #fff;
-            height: 80px;
-            width: 80px;
-            text-align: center;
-            line-height: 80px;
-            font-size: 32px;
-            color: #0692F0;
-            border-radius: 10px;
-            -webkit-border-radius: 10px;
-            -moz-border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            margin-top: -70px;
             cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            -webkit-transition: all 0.2s ease-in-out;
-            -moz-transition: all 0.2s ease-in-out;
         }
-        */
+
+        .colorpicker{
+            margin-top: 15px;
+            text-align: center;
+            color: rgb(173, 173, 173);
+        }
+
+        .message{
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            text-align: center;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            color: #fff;
+            background-image: linear-gradient(90deg, rgb(6, 146, 240) 2%, rgb(83, 184, 252) 100%);
+            background-image: -moz-linear-gradient(left, rgb(6, 146, 240) 2%, rgb(83, 184, 252) 100%);
+            background-image: -webkit-linear-gradient(left, rgb(6, 146, 240) 2%, rgb(83, 184, 252) 100%);
+            background-image: -o-linear-gradient(left, rgb(6, 146, 240) 2%, rgb(83, 184, 252) 100%);
+            background-image: -ms-linear-gradient(left, rgb(6, 146, 240) 2%, rgb(83, 184, 252) 100%);
+        }
 
     </style>
 
@@ -380,13 +341,25 @@
 
     <script type="text/javascript">
 
+        if( $(window).height() < 620 ){
+            $('.palette-list').find('.sg:eq(4)').nextAll().remove();
+        }
+
+        if( $(window).height() < 600 ){
+            $('.message').css('display', 'block');
+        }
+
         {% if not user.is_authenticated %}
             $('.login-popup-wrapper').show();
         {% endif %}
 
         $(".colorpicker").spectrum({
             color: "#f00",
+            showInput: true,
             showAlpha: true,
+
+            preferredFormat: "rgb",
+
             
             hide: function(tinycolor) 
             {
@@ -429,9 +402,8 @@ $(document).ready(function() {
         bgOne = $('.left-fill').css('backgroundColor');
         bgTwo = $('.right-fill').css('backgroundColor');
         $(this).fadeOut('fast');
-        $('.copy-gradient').addClass('show-copy')
-        $('.gradient-slider').fadeIn();
 
+        $('.gradient-slider').fadeIn();
 
         $('.gradient-slider').addClass('fac active-slider', function() {
             gradientSlider = $('.gradient-slider.active-slider').draggable({
@@ -450,10 +422,6 @@ $(document).ready(function() {
                     // Применяем изменения градиента
                     writeGradient();
 
-                    // Пишет текст, чтобы мог увидеть пользователь и скопировать
-                    $('#gradient-output').html(
-                        "background-image: " + gradientDirection + buildGradient + ";" + "<br>" + "background-image: " + mozGradientDirection + buildGradient + ";" + "<br>" + "background-image: " + webkitGradientDirection + buildGradient + ";" + "<br>" + "background-image: " + oGradientDirection + buildGradient + ";" + "<br>" + "background-image: " + msGradientDirection + buildGradient + ";"
-                    );
                 }
             }).disableSelection();
         }); // graggable
@@ -462,6 +430,8 @@ $(document).ready(function() {
         $('.color-fill').addClass('fill-fade');
         $('#palette-group-left').addClass('out-left');
         $('#palette-group-right').addClass('out-right');
+
+        $('.gradient-controll').fadeIn();
 
         // Применяем изменения градиента
         writeGradient();
@@ -480,35 +450,19 @@ $(document).ready(function() {
         $('.display').css('background-image', msGradientDirection + buildGradient);
     }
 
-    // Когда пользователь хочет увидеть код градиента, показывает popup и выводит html код
-    $('.copy-gradient').on('click', function() {
-        $('#gradient-output').toggleClass('drop-from-top');
-        $('#hide-gradient-code').delay(600).fadeToggle();
-        $('#gradient-output').html(
-            "<span>" + "background-image: " + gradientDirection + buildGradient + ";" + "</span><span>" + "background-image: " + mozGradientDirection + buildGradient + ";" + "</span><span>" + "background-image: " + webkitGradientDirection + buildGradient + ";" + "</span><span>" + "background-image: " + oGradientDirection + buildGradient + ";" + "</span><span>" + "background-image: " + msGradientDirection + buildGradient + ";" + "</span>"
-        );
-    });
-
-    // Скрыть текст с html кодом градента (который выводится для пользователя)
-    $('#hide-gradient-code').on('click', function() {
-        $(this).fadeOut();
-        $('#gradient-output').removeClass('drop-from-top');
-    })
-
 
     // Убрать изменение градиента и показать палитру
     $('.refresh-gradient').on('click', function() {
+
+        $('.gradient-controll').fadeOut();
+
         $('.initiate-gradient').fadeIn('fast');
-        $('.copy-gradient').removeClass('show-copy')
         $('.gradient-slider').fadeOut();
         $('.gradient-slider').removeClass('active-slider').removeClass('fac').addClass('fixed');
         $('.color-fill').removeClass('fill-fade');
         $('#palette-group-left').removeClass('out-left');
         $('#palette-group-right').removeClass('out-right');
-        $('#gradient-output').removeClass('drop-from-top');
-        $('#hide-gradient-code').fadeOut();
     });
-
 
     
     // Сохраняем и создаём градиент

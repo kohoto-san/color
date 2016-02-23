@@ -5,7 +5,13 @@
 		
 	<div class="item item-details" data-id="{{object.id}}">
 
-		<div class="canvas" style="background-image: linear-gradient{{object.get_html}};">
+		<div class="canvas" style="
+		background-image: linear-gradient{{object.get_html}}; 
+		background-image: -moz-linear-gradient{{object.get_html}};
+		background-image: -webkit-linear-gradient{{object.get_html}};
+		background-image: -o-linear-gradient{{object.get_html}};
+		background-image: -ms-linear-gradient{{object.get_html}};
+		">
 			
 			<div class="canvas-popup">
 				<div> 
@@ -20,11 +26,12 @@
 		</div> <!-- /.canvas -->
 		
 		<div class="actionbar">
-			
+		
 			<div class="actionbar-element actionbar-left">
 				{% if user.profile in object.likes.all %}
 					<a href="#" class="like-wrapper like-active">
 						<i class="fa fa-heart"></i>
+						<span>Like</span>
 						{% comment %}
 						<span>0</span>
 						{% endcomment %}
@@ -32,34 +39,33 @@
 				{% else %}
 					<a href="#" class="like-wrapper">
 						<i class="fa fa-heart"></i>
+						<span>Like</span>
 						{% comment %}
 						<span>0</span>
 						{% endcomment %}
 					</a>
 				{% endif %}
+
+					
 			</div>
 
-			<div class="actionbar-element actionbar-right">
-				<span>1 Day</span>
+			<div class="actionbar-element actionbar-right actionbar-date">
+				<span>{{object.time|date:"j M"}}</span>
 			</div>
 
-			{% comment %}
 			<div class="actionbar-share">
-				<div class="actionbar-element actionbar-left">
-					<span>Share</span>
-				</div>
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http://tabiku.com{% url 'blend_details' object.id %}" target="_blank" class="actionbar-element actionbar-left">
+					<span>Share on Facebook</span>
+				</a>
 
-				<div class="actionbar-element actionbar-right">
-					<a href="#"> 
-						<i class="fa fa-facebook fa-lg"></i>
-					</a>
-
-					<a href="#"> 
-						<i class="fa fa-twitter fa-lg"></i>
-					</a>
-				</div>
-			</div>
-			{% endcomment %}
+				<a href="http://twitter.com/share?text=Found a nice gradient on Tabiku by @sihaelov&url=http://tabiku.com{% url 'blend_details' object.id %}" target="_blank" class="actionbar-element actionbar-right">
+					<span>Share on Twitter</span>
+						{% comment %}
+							<i class="fa fa-facebook fa-lg"></i>
+							<i class="fa fa-twitter fa-lg"></i>
+						{% endcomment %}
+				</a>
+			</div> <!-- /.actionbar-share -->
 
 		</div> <!-- /.actionbar -->
 
