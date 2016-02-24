@@ -5,7 +5,7 @@
 
 	<div class="profile-body">
 		
-		<h1>Michael Sinov</h1>
+		<h1>{{profile.user.first_name}} {{profile.user.last_name}}</h1>
 
 		<div class="profile-tabs">
 			<a class="gradients" href="{% url 'profile_details' profile.pk %}">Gradients</a>

@@ -89,6 +89,18 @@
 		<a href="/">Home</a>
 		<a href="{% url 'blend' %}">Create</a>
 
+		<div class="navbar-share">
+			<span>Share</span>
+            
+			<a href="http://twitter.com/share?text=Discover and generate beautiful CSS3 gradients by @sihaelov&url=http://tabiku.com" target="_blank">
+            	<i class="fa fa-twitter fa-lg"></i>
+            </a>
+
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://tabiku.com" target="_blank">
+            	<i class="fa fa-facebook fa-lg"></i>
+            </a>
+		</div>
+
         {% if user.is_authenticated %}
 			<a href="{% url 'profile_details' user.pk %}" style="text-align: right; float: right;">Profile</a>
 		{% else %}
