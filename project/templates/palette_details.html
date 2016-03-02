@@ -1,15 +1,27 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block header %}
+	<link rel="stylesheet" href="{% static 'owl.carousel.css' %}">
+	{{block.super}}
+{% endblock header %}
+
 {% block content %}
 	
-	<div class="palette">
+	<script src="{% static 'owl.carousel.min.js' %}"></script>
+
+
+	<div class="palette" style="margin-top: 30px;">
 		<div class="palette-colors-list">
 
 			{% for color in palette.get_colors %}
-				<div class="palette-color" style="background-color: #{{color.color}}"></div>
+				<div class="palette-color" style="background-color: #{{color.color}}"><span style="font-size: 20px; background-color: rgba(0, 0, 0, 0.2); color: #fff; line-height: 200px;">#{{color.color}}</span></div>
 			{% endfor %}
 		</div>
+	</div>
+
+	<div class="feed feed-homepage">
+		{% include "load-home.html" %}
 	</div>
 
    <style type="text/css">

@@ -187,7 +187,13 @@ def palette_create(request):
 
 def palette_details(request, palette_id):
     palette = get_object_or_404(ColorPalette, id=palette_id)
-    return render(request, 'palette_details.html', {'palette': palette, 'is_featured': False})
+
+    gradients = GradientPalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+    palettes = ColorPalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+    images = ImagePalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+    context = {'palette': palette, 'is_featured': False, 'gradients': gradients, 'palettes': palettes, 'images': images}
+
+    return render(request, 'palette_details.html', context)
 
 
 def resize_and_crop(img, size, crop_type='middle'):
@@ -357,7 +363,13 @@ def image_load(request):
 
 def image_details(request, image_id):
     image = get_object_or_404(ImagePalette, id=image_id)
-    return render(request, 'image_details.html', {'image': image, 'is_featured': False})
+
+    gradients = GradientPalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+    palettes = ColorPalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+    images = ImagePalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+    context = {'image': image, 'is_featured': False, 'gradients': gradients, 'palettes': palettes, 'images': images}
+
+    return render(request, 'image_details.html', context)
 
 
 def image(request):

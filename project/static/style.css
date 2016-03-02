@@ -802,3 +802,14 @@ body{
 .homepage-actions > a:hover .homepage-actions__overlay{
     opacity: 0;
 }
+
+.feed-homepage{
+    width: 80%;
+    margin: 100px auto;
+}
+
+@media (max-width: 500px){
+    .feed-homepage{
+        width: 100%;
+    }
+}
