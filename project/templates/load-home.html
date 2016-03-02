@@ -1,0 +1,253 @@
+
+
+	<div class="feed-images">
+		
+		<div class="feed-header">
+			<span>Images</span>
+			<div class="feed-nav">
+				<a href="{% url 'images_list' %}" class="item-btn" style="line-height: 24px; vertical-align: text-bottom; text-transform: uppercase; margin-right: 10px;">All</a>
+				<a class="prev item-btn"><i class="material-icons">&#xE314;</i></a>
+				<a class="next item-btn"><i class="material-icons">&#xE315;</i></a>
+			</div>
+		</div>
+		
+		<div class="feed-wrapper images-wrapper">
+			{% for image in images %}
+				<div class="image-item item-shadow">
+					
+					<a  href="{% url 'image_details' image.id %}">
+						<div class="feed__colors-wrapper" style="width: 50px;">
+							{% for color in image.get_colors %}
+								<div class="palette-color" style="background-color: #{{color.color}}"></div>
+							{% endfor %}
+						</div>
+						<img src="{{image.image.url}}">
+					</a>
+
+					<div class="actionbar">
+		
+						<div class="actionbar-element actionbar-left">
+							{% if user.profile in image.likes.all %}
+								<a href="#" class="like-wrapper like-active">
+									<i class="fa fa-heart"></i>
+									<span>Like</span>
+								</a>
+							{% else %}
+								<a href="#" class="like-wrapper">
+									<i class="fa fa-heart"></i>
+									<span>Like</span>
+								</a>
+							{% endif %}
+
+						</div>
+
+						<div class="actionbar-element actionbar-right actionbar-date">
+							<div class="item-mini-share item-btn-shadow">
+
+								<a href="https://www.facebook.com/sharer/sharer.php?u=http://tabiku.com{% url 'image_details' image.id %}" target="_blank">
+									<i class="fa fa-facebook fa-lg"></i>
+								</a>
+
+								<a href="http://twitter.com/share?text=Found a nice colour palette on Tabiku by @sihaelov&url=http://tabiku.com{% url 'image_details' image.id %}" target="_blank">
+									<i class="fa fa-twitter fa-lg"></i>
+								</a>
+
+							</div>
+
+							<a class="item-btn share-link">
+								<i class="fa fa-share"></i>
+							</a>
+						</div>
+
+					</div> <!-- /.actionbar -->
+
+				</div>
+			{% endfor %}
+		</div> <!-- /.images-wrapper -->
+	</div> <!-- /.feed-image -->
+
+
+	<div class="feed-palettes" style="margin-top: 50px; margin-bottom: 50px;">
+
+		<div class="feed-header">
+			<span>Palettes</span>
+			<div class="feed-nav">
+				<a class="prev item-btn"><i class="material-icons">&#xE314;</i></a>
+				<a class="next item-btn"><i class="material-icons">&#xE315;</i></a>
+			</div>
+		</div>
+
+		<div class="feed-wrapper palettes-wrapper">
+			{% for palette in palettes %}
+
+				<div class="feed-palettes__palette feed__colors-wrapper item-shadow">
+					<a href="{% url 'palette_details' palette.id %}">
+						{% for color in palette.get_colors %}
+							<div class="palette-color" style="background-color: #{{color.color}}"></div>
+						{% endfor %}
+					</a>
+
+					<div class="actionbar">
+		
+						<div class="actionbar-element actionbar-left">
+							{% if user.profile in palette.likes.all %}
+								<a href="#" class="like-wrapper like-active">
+									<i class="fa fa-heart"></i>
+									<span>Like</span>
+								</a>
+							{% else %}
+								<a href="#" class="like-wrapper">
+									<i class="fa fa-heart"></i>
+									<span>Like</span>
+								</a>
+							{% endif %}
+
+						</div>
+
+						<div class="actionbar-element actionbar-right actionbar-date">
+							<div class="item-mini-share item-btn-shadow">
+
+								<a href="https://www.facebook.com/sharer/sharer.php?u=http://tabiku.com{% url 'palette_details' palette.id %}" target="_blank">
+									<i class="fa fa-facebook fa-lg"></i>
+								</a>
+
+								<a href="http://twitter.com/share?text=Found a nice colour palette on Tabiku by @sihaelov&url=http://tabiku.com{% url 'palette_details' palette.id %}" target="_blank">
+									<i class="fa fa-twitter fa-lg"></i>
+								</a>
+
+							</div>
+
+							<a class="item-btn share-link">
+								<i class="fa fa-share"></i>
+							</a>
+						</div>
+
+					</div> <!-- /.actionbar -->
+
+				</div> <!-- /.palette -->
+			{% endfor %}
+		</div> <!-- /.palettes-wrapper -->
+	</div> <!-- /.feed-palettes -->
+
+	<div class="feed-gradients">
+
+		<div class="feed-header">
+			<span>Gradients</span>
+			<div class="feed-nav">
+				<a class="prev item-btn"><i class="material-icons">&#xE314;</i></a>
+				<a class="next item-btn"><i class="material-icons">&#xE315;</i></a>
+			</div>
+		</div>
+
+		<div class="feed-wrapper gradients-wrapper">
+		{% for object in gradients %}
+			<div class="gradients-item item-shadow" data-id="{{object.id}}" data-gradient="{{object.get_html}}">
+
+				<a href="/featured/{{object.id}}" class="canvas" style="display: block;">
+				<!--
+				<div class="canvas">
+				-->
+
+					<div class="canvas-popup">
+						<div> 
+							<span class="tran">{{object.get_color_one}} </span>
+						</div>
+
+						<div> 
+							<span class="tran2">{{object.get_color_two}}</span>
+						</div>
+					</div>
+
+				</a> <!-- /.canvas -->
+				
+				<div class="actionbar">
+		
+					<div class="actionbar-element actionbar-left">
+						{% if user.profile in object.likes.all %}
+							<a href="#" class="like-wrapper like-active">
+								<i class="fa fa-heart"></i>
+								<span>Like</span>
+							</a>
+						{% else %}
+							<a href="#" class="like-wrapper">
+								<i class="fa fa-heart"></i>
+								<span>Like</span>
+							</a>
+						{% endif %}
+
+					</div>
+
+						<div class="actionbar-element actionbar-right actionbar-date">
+							<div class="item-mini-share item-btn-shadow">
+
+								<a href="https://www.facebook.com/sharer/sharer.php?u=http://tabiku.com{% url 'blend_details' object.id %}" target="_blank">
+									<i class="fa fa-facebook fa-lg"></i>
+								</a>
+
+								<a href="http://twitter.com/share?text=Found a nice gradient on Tabiku by @sihaelov&url=http://tabiku.com{% url 'blend_details' object.id %}" target="_blank">
+									<i class="fa fa-twitter fa-lg"></i>
+								</a>
+
+							</div>
+
+							<a class="item-btn share-link">
+								<i class="fa fa-share"></i>
+							</a>
+						</div>
+
+					</div> <!-- /.actionbar -->
+
+			</div>
+		{% endfor %}
+		</div> <!-- /.gradients-wrapper -->
+	</div>
+
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+ 
+        $(".gradients-wrapper").owlCarousel({
+        	margin: 20,
+        	autoWidth:true,
+        	items: 2,
+        });
+
+        $(".images-wrapper").owlCarousel({
+        	margin: 20,
+        	autoWidth:true,
+        	items: 2,
+        });
+
+        $(".palettes-wrapper").owlCarousel({
+        	margin: 20,
+        	autoWidth:true,
+        	items: 2,
+        });
+
+        
+        // Custom Navigation Events
+		$(".next").click(function(){
+		    $(this).parents('.feed-header').siblings('.feed-wrapper').trigger('next.owl.carousel');
+		});
+		
+		$(".prev").click(function(){
+		    $(this).parents('.feed-header').siblings('.feed-wrapper').trigger('prev.owl.carousel');
+		});
+
+
+
+		$('.gradients-item').each(function(){
+            var buildGradient = $(this).data("gradient");
+            var display = $(this).find('.canvas');
+
+            display.css('background-image', 'linear-gradient' + buildGradient);
+            display.css('background-image', '-moz-linear-gradient' + buildGradient);
+            display.css('background-image', '-webkit-linear-gradient' + buildGradient);
+            display.css('background-image', '-o-linear-gradient' + buildGradient);
+            display.css('background-image', '-ms-linear-gradient' + buildGradient);
+        });
+
+	});
+
+</script>

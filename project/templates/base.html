@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	{% load staticfiles %}
+
 	{% block header %}
 
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,19 +20,23 @@
 		
 		<title>Tabiku</title>
 
+	 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link rel="stylesheet" href="{% static 'font-awesome.min.css' %}">
 
-	    {% load staticfiles %}
 	    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 
 	    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,100,100italic,300&subset=latin,cyrillic,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+	    <link href='{% static "google-fonts.css" %}' rel='stylesheet' type='text/css'>
 	
 	{% endblock header %}
 
 
 </head>
 <body style="background-color: whitesmoke;">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{% static 'jquery.min.js' %}"></script>
 
 	<script type="text/javascript">
 		$.ajaxSetup({
@@ -87,7 +93,10 @@
 	<div class="navbar">
 
 		<a href="/">Home</a>
+		
+		<!--
 		<a href="{% url 'blend' %}">Create</a>
+		-->
 
 		<div class="navbar-share">
 			<span>Share</span>
@@ -109,12 +118,14 @@
 
 	</div> <!-- /.navbar -->
 
+	{% comment %}
 	<div class="twitter-sihaelov">
 		<a href="https://twitter.com/sihaelov" target="_blank">
 			<i class="fa fa-twitter"></i>
 			<span>@sihaelov</span>
 		</a>
 	</div>
+	{% endcomment %}
 
 	{% block login %}
         <div class="login-popup-wrapper" style="display: none;">
@@ -154,6 +165,10 @@
 
         $('.login-popup-wrapper .close').click(function(){
             $('.login-popup-wrapper').hide();
+        });
+
+	    $(document).on('click', '.share-link', function(){
+        	$(this).parent('.actionbar-element').toggleClass('share-active');
         });
 
 

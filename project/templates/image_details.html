@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+	
+	<div class="palette">
+		<img src="{{image.image.url}}"></img>
+
+		<div class="palette-colors-list">
+
+			{% for color in image.get_colors %}
+				<div class="palette-color" style="background-color: #{{color.color}}"></div>
+			{% endfor %}
+
+			<p>{{image.get_colors}}</p>
+		</div>
+	</div>
+
+
+   <style type="text/css">
+
+     	.palette{
+     		margin: auto;
+     		text-align: center;
+     		font-size: 0;
+     	}
+
+     	.palette-colors-list{
+     		margin-bottom: 50px;
+     	}
+
+     	.palette-color{
+     		display: inline-block;
+     		width: 200px;
+     		height: 200px;
+     		background-color: #ccc;
+     		cursor: pointer;
+     	}
+
+     	.color-one{
+     		background-color: #eee;
+     		border-radius: 5px 0 0 5px;
+     	}
+
+     	.color-two{
+     		background-color: #ddd;
+     	}
+
+		.color-three{
+    		background-color: #ccc;
+		}
+
+		.color-four{
+			background-color: #bbb;
+		}
+
+		.color-five{
+			background-color: #aaa;
+     		border-radius: 0 5px 5px 0;
+		}
+
+		.palette-color.active{
+			border-top: 3px solid #9191FF;
+		}
+
+		.palette-done{
+			width: 50px;
+			background-color: #fff;
+			margin: 20px auto;
+			padding: 10px;
+			cursor: pointer;
+		}
+
+
+
+
+		.sp-picker-container{
+			width: 300px;
+		}
+
+		.sp-input-container{
+		    max-width: 170px;
+		    float: left;
+		}
+
+   </style>
+
+
+
+{% endblock content %}

@@ -31,16 +31,29 @@ urlpatterns = [
     url(r'^profile/(?P<id_profile>\d+)/likes/$', views.profile_likes, name='profile_likes'),
 
     url(r'^$', views.load_home, name='home'),
+    url(r'^gradients/$', views.load_gradients, name='load_gradients'),
 
     # url(r'^get', views.load_palettes, name='load_palettes'),
 
     url(r'^like/(?P<palette_id>\d+)/$', views.like, name='like'),
 
     url(r'^blend/$', views.blend, name='blend'),
-    url(r'^blend-create/$', views.blend_create, name='blend_create'),
+    url(r'^ajax/blend-create/$', views.blend_create, name='blend_create'),
+
+    url(r'^create/palette/$', views.palette, name='palette'),
+    url(r'^ajax/palette-create/$', views.palette_create, name='palette_create'),
+    url(r'^palette/(?P<palette_id>\d+)/$', views.palette_details, name='palette_details'),
 
     url(r'^featured/(?P<blend_id>\d+)/$', views.featured_blend, name='featured_blend'),
     url(r'^p/(?P<blend_id>\d+)/$', views.blend_details, name='blend_details'),
+
+
+    url(r'^ajax/load-image/$', views.image_load, name='image_load'),
+    url(r'^image/(?P<image_id>\d+)/$', views.image_details, name='image_details'),
+    url(r'^create/image/$', views.image, name='image'),
+
+
+    url(r'^images/$', views.images_list, name='images_list'),
 ]
 
 if environ['DEBUG_BOOL']:

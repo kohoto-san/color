@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div style="margin: auto; width: 70%; text-align: center; margin-top: 200px;">
+		
+		<h1 style="font-weight: 500;">Create a Palette from a URL</h1>
+		<span>Just paste the image URL below.</span>
+		<p class="error" style="display: none; color: #d50000;"></p>
+
+		<div style="margin: 30px 0;">
+			<input id="image_url" type="url" class="item-btn" style="height: 40px; width: 400px; margin: auto; display: block; cursor: auto;">
+		</div>
+
+		<a id="submit" class="item-btn" style="text-align: center; font-size: 24px; padding: 6px 24px; color: #717579;">Submit</a>
+	</div>
+
+	<script type="text/javascript">
+
+		$('#submit').click(function(){
+
+			var image_url = $('#image_url').val();
+			$('#submit').text('Submit...');
+
+			if(image_url == ''){
+				$('.error').text('Looks like you left the URL field blank.');
+				$('.error').show();
+				$('#submit').text('Submit');
+				return false;
+			}
+
+			$.post("{% url 'image_load'  %}", {image_url: image_url})
+				.done(function( data ) {
+					$('#submit').text('Submit');
+		            location.href = "/image/" + data;
+				})
+				.fail(function() {
+					$('.error').text("Oops. Are you sure that's an image URL?");
+				    $('.error').show();
+			  	})
+			  	.always(function(){
+					$('#submit').text('Submit');
+			  	});
+
+		});
+
+		
+		
+
+	</script>
+
+
+{% endblock content %}

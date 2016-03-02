@@ -1,0 +1,55 @@
+{% for image in object_list %}
+
+		<div style="width: 100%; display: inline-block;">
+			<div class="image-item item-shadow" style="display: inline-block;">
+				
+				<a  href="{% url 'image_details' image.id %}">
+					<div class="feed__colors-wrapper" style="width: 50px;">
+						{% for color in image.get_colors %}
+							<div class="palette-color" style="background-color: #{{color.color}}; height: 60px;"></div>
+						{% endfor %}
+					</div>
+					<img src="{{image.image.url}}" style="height: 300px;">
+				</a>
+
+				<div class="actionbar">
+	
+					<div class="actionbar-element actionbar-left">
+						{% if user.profile in image.likes.all %}
+							<a href="#" class="like-wrapper like-active">
+								<i class="fa fa-heart"></i>
+								<span>Like</span>
+							</a>
+						{% else %}
+							<a href="#" class="like-wrapper">
+								<i class="fa fa-heart"></i>
+								<span>Like</span>
+							</a>
+						{% endif %}
+
+					</div>
+
+					<div class="actionbar-element actionbar-right actionbar-date">
+						<div class="item-mini-share item-btn-shadow">
+
+							<a href="https://www.facebook.com/sharer/sharer.php?u=http://tabiku.com{% url 'image_details' image.id %}" target="_blank">
+								<i class="fa fa-facebook fa-lg"></i>
+							</a>
+
+							<a href="http://twitter.com/share?text=Found a nice colour palette on Tabiku by @sihaelov&url=http://tabiku.com{% url 'image_details' image.id %}" target="_blank">
+								<i class="fa fa-twitter fa-lg"></i>
+							</a>
+
+						</div>
+
+						<a class="item-btn share-link">
+							<i class="fa fa-share"></i>
+						</a>
+					</div>
+
+				</div> <!-- /.actionbar -->
+
+			</div>
+		</div>
+
+{% endfor %}

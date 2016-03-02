@@ -39,7 +39,8 @@ def createProfile(social_account, user):
         profile.id_profile = id_profile + 1
     """
 
-    img_format = avatar_url[-4:]
+    pos_img_format = avatar_url.rfind('.')
+    img_format = avatar_url[pos_img_format:]
 
     img_temp = NamedTemporaryFile(delete=True)
     img_temp.write(urllib.request.urlopen(avatar_url).read())

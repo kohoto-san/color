@@ -2,10 +2,51 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block header %}
+	<link rel="stylesheet" href="{% static 'owl.carousel.css' %}">
+	{{block.super}}
+
+
+{% endblock header %}
+
 {% block content %}
 	
-	<div class="feed"></div> <!-- /.feed -->
+	<script src="{% static 'owl.carousel.min.js' %}"></script>
 
-    <script src="{% static 'load_palettes.js' %}"></script>
+	<div class="homepage-actions">
+		<a href="{% url 'blend' %}">
+			<div class="homepage-actions__overlay" style="background-color: #1976D2;"></div>
+			<h2>Create Gradient</h2>
+		</a>
+
+		<a href="{% url 'palette' %}">
+			<div class="homepage-actions__overlay" style="background-color: #AD1457;"></div>
+			<h2>Create Palette</h2>
+		</a>
+		
+		<a href="{% url 'image' %}">
+			<div class="homepage-actions__overlay" style="background-color: #26A69A;"></div>
+			<h2>Create a Palette from a URL</h2>
+		</a>
+	</div>
+
+	<div class="feed">
+ 		{% include "load-home.html" %}
+	</div> <!-- /.feed -->
+
+		
+	<style type="text/css">
+		.feed{
+			width: 80%;
+			margin: 100px auto;
+		}
+
+		@media (max-width: 500px){
+			.feed{
+				width: 100%;
+			}
+		}
+
+	</style>
 
 {% endblock content %}
