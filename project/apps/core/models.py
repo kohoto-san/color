@@ -57,7 +57,7 @@ class PaletteMeta(models.Model):
     likes = models.ManyToManyField(Profile, related_name='%(class)s_likes', blank=True)
     likes_count = models.IntegerField(default=1)
 
-    is_featured = models.BooleanField(default=True)
+    is_featured = models.BooleanField(default=False)
     date_featured = models.DateTimeField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
