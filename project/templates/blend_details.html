@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block header %}
+	<link rel="stylesheet" href="{% static 'owl.carousel.css' %}">
+	{{block.super}}
+{% endblock header %}
+
 {% block content %}
+	
+	<script src="{% static 'owl.carousel.min.js' %}"></script>
 		
-	<div class="item item-details" data-id="{{object.id}}">
+	<div class="item item-details gradients-item item-shadow" data-id="{{object.id}}">
 
 		<div class="canvas" style="background-image: linear-gradient{{object.get_html}};">
 			
@@ -63,9 +70,10 @@
 
 		</div> <!-- /.actionbar -->
 
-	</div>
+	</div> <!-- /.item -->
 
-	<div class="item item-details output-gradient" onclick="select_all(this)">
+
+	<div class="item-btn item item-details output-gradient" onclick="select_all(this)">
 		<p> background-image: linear-gradient{{object.get_html}}; </p>
 		<p> background-image: -moz-linear-gradient{{object.get_html}}; </p>
 		<p> background-image: -webkit-linear-gradient{{object.get_html}}; </p>
@@ -73,9 +81,15 @@
 		<p> background-image: -ms-linear-gradient{{object.get_html}}; </p>
 	</div>
 
+	{% comment %}
 	<div class="feed"></div> <!-- /.feed -->
-
     <script src="{% static 'load_palettes.js' %}"></script>
+	{% endcomment %}
+
+	<div class="feed feed-homepage">
+		{% include "load-home.html" %}
+	</div>
+
 
     <script type="text/javascript">
 

@@ -198,6 +198,7 @@ body{
 	display: block;
 	margin: auto;
 	width: 480px;
+    margin-top: 70px;
 }
 
 .item-details .actionbar-share a{

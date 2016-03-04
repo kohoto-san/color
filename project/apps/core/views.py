@@ -123,8 +123,15 @@ def featured_blend(request, blend_id):
     else:
         blend = get_object_or_404(GradientPalette, id=blend_id)
 
+        gradients = GradientPalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+        palettes = ColorPalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+        images = ImagePalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+        context = {'object': blend, 'is_featured': True, 'gradients': gradients, 'palettes': palettes, 'images': images}
+
+        return render(request, 'blend_details.html', context)
+
         if blend.is_featured:
-            return render(request, 'blend_details.html', {'object': blend, 'is_featured': True})
+            return render(request, 'blend_details.html', context)
         else:
             raise Http404
 
@@ -135,7 +142,13 @@ def blend_details(request, blend_id):
         return load_palettes(request, post_objects, True)
     else:
         blend = get_object_or_404(GradientPalette, id=blend_id)
-        return render(request, 'blend_details.html', {'object': blend, 'is_featured': False})
+
+        gradients = GradientPalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+        palettes = ColorPalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+        images = ImagePalette.objects.filter(is_featured=True).order_by('-date_featured')[:10]
+        context = {'object': blend, 'is_featured': False, 'gradients': gradients, 'palettes': palettes, 'images': images}
+
+        return render(request, 'blend_details.html', context)
 
 
 def profile_details(request, id_profile):
