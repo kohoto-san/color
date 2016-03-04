@@ -380,7 +380,7 @@ def images_list(request):
 
     if request.method == 'POST' and request.is_ajax():
 
-        post_objects = ImagePalette.objects.all().order_by('-date')
+        post_objects = ImagePalette.objects.filter(is_featured=True).order_by('-date')
 
         if not post_objects:
             return HttpResponse('empty')
