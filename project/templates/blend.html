@@ -1,22 +1,14 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block header %}
 
-    {{block.super}}
-
+{% block content %}
+    
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <script src="{% static 'spectrum.js' %}"></script>
     <link rel='stylesheet' href="{% static 'spectrum.css' %}"/>
-
-{% endblock %}
-
-
-{% block content %}
     
-    
-
     <div class="gradient-body">
             
         <div class="message">
